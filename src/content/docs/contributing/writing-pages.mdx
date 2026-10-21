@@ -1,0 +1,98 @@
+---
+title: Writing pages
+description: How to add and format pages on the Reign of Nether wiki.
+sidebar:
+  order: 1
+---
+
+import { Aside, Badge, Card, CardGrid, FileTree, Steps, Tabs, TabItem } from '@astrojs/starlight/components';
+
+Every page is a Markdown (`.md`) or MDX (`.mdx`) file in `src/content/docs/`. The folder decides which sidebar section it lands in, and the file name becomes the URL.
+
+## Adding a page
+
+<Steps>
+
+1. Pick the section folder, for example `src/content/docs/factions/`.
+
+2. Create a file such as `piglins.md` with this frontmatter:
+
+   ```md
+   ---
+   title: Piglins
+   description: Units, buildings and strategy for the Piglin faction.
+   sidebar:
+     order: 3 # optional: lower numbers appear first
+   ---
+
+   Your content here.
+   ```
+
+3. Run `pnpm dev` and open the page at `/factions/piglins/`.
+
+</Steps>
+
+<FileTree>
+- src/content/docs/
+  - index.mdx home page
+  - getting-started/
+  - launcher/
+  - factions/
+    - index.md section overview
+    - **piglins.md** your new page
+  - game-modes/
+  - multiplayer/
+  - mapmaking/
+  - contributing/
+</FileTree>
+
+To add a whole new sidebar section, create the folder and add it to `sidebar` in `astro.config.mjs`.
+
+## Images
+
+Put images next to your page, or in `src/assets/`, and link them relatively. They're rendered pixelated, which suits Minecraft textures.
+
+```md
+![Piglin Brute](../../assets/piglin-brute.png)
+```
+
+## Callouts
+
+Use `:::note`, `:::tip`, `:::caution` or `:::danger` in Markdown:
+
+:::note
+Notes add context.
+:::
+
+:::tip[Pro tip]
+Tips can have a custom title.
+:::
+
+:::caution
+Cautions warn about mistakes.
+:::
+
+:::danger
+Dangers warn about losing progress or data.
+:::
+
+## Components
+
+Components work in `.mdx` files only. Import them from `@astrojs/starlight/components`.
+
+<CardGrid>
+	<Card title="Cards" icon="star">Group related info.</Card>
+	<Card title="Badges" icon="information">
+		<Badge text="New" variant="tip" /> <Badge text="1.20.1" variant="note" /> <Badge text="Removed" variant="danger" />
+	</Card>
+</CardGrid>
+
+<Tabs>
+	<TabItem label="Windows">Run the `.exe` installer.</TabItem>
+	<TabItem label="macOS">Open the `.dmg` and drag the app to Applications.</TabItem>
+	<TabItem label="Linux">Use the AppImage or `.deb`.</TabItem>
+</Tabs>
+
+#### Small heading
+
+Use `####` for minor sub-headings. Full component reference: [Starlight components](https://starlight.astro.build/components/using-components/).

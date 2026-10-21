@@ -1,0 +1,27 @@
+---
+title: Reign of Nether
+description: The community wiki for Reign of Nether, the RTS mod for Minecraft.
+template: splash
+hero:
+  tagline: RTS in Minecraft — the community wiki
+  image:
+    file: ../../assets/icon.png
+  actions:
+    - text: Get started
+      link: /getting-started/
+      icon: right-arrow
+    - text: Write for the wiki
+      link: /contributing/writing-pages/
+      variant: secondary
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+<CardGrid>
+	<LinkCard title="Getting Started" description="Install the mod and play your first match." href="/getting-started/" />
+	<LinkCard title="Launcher" description="Install, settings and troubleshooting." href="/launcher/" />
+	<LinkCard title="Factions" description="Villagers, Monsters and Piglins." href="/factions/" />
+	<LinkCard title="Game Modes" description="Classic, Wave Survival, Sandbox and Scenario." href="/game-modes/" />
+	<LinkCard title="Multiplayer" description="Matchmaking, lobbies, ranks and spectating." href="/multiplayer/" />
+	<LinkCard title="Mapmaking" description="Build maps and use RoN commands." href="/mapmaking/" />
+</CardGrid>

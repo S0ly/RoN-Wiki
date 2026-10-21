@@ -1,0 +1,351 @@
+/*
+ * Reign of Nether skin for Starlight.
+ *
+ * Tokens are copied from the website (Ron-Website/assets/styles/tokens.css);
+ * button bevels come from the launcher (RoN-Launcher/src/App.svelte).
+ * Unlayered, so every rule here beats Starlight's own @layer styles.
+ */
+
+:root {
+	/* RoN tokens */
+	--void: #0d0305;
+	--char: #380000;
+	--scorch: #7a2c06;
+	--panel: #24232c;
+	--panel-deep: #1a1920;
+	--panel-dark: #17161c;
+	--panel-raised: #26252e;
+	--panel-hover: #33323d;
+	--outline-hard: #14131a;
+	--ember: #dd6003;
+	--flame: #f19a0f;
+	--gold: #fbeb3c;
+	--spark: #fef481;
+	--ink: #cfd3e8;
+	--ink-bright: #e7e9f5;
+	--ink-soft: #b7bcd6;
+	--ink-muted: #9a9fc1;
+	--ink-faint: #7a7da8;
+	--font-display: 'Pixelify Sans', 'Trebuchet MS', sans-serif;
+	--font-pixel: 'Silkscreen', ui-monospace, monospace;
+	--gradient-fire: linear-gradient(180deg, var(--spark) 0%, var(--gold) 28%, var(--flame) 60%, var(--ember) 86%, #c2440a 100%);
+	--edge-ember: linear-gradient(180deg, rgb(241 154 15 / 0.7), rgb(221 96 3 / 0.15));
+	--bevel-panel: inset 0 3px 0 0 rgb(255 255 255 / 0.05), 0 16px 40px rgb(0 0 0 / 0.5);
+
+	/* Starlight mapping */
+	--sl-color-white: var(--ink-bright);
+	--sl-color-gray-1: var(--ink);
+	--sl-color-gray-2: var(--ink-soft);
+	--sl-color-gray-3: var(--ink-muted);
+	--sl-color-gray-4: var(--ink-faint);
+	--sl-color-gray-5: var(--panel-hover);
+	--sl-color-gray-6: var(--panel-dark);
+	--sl-color-black: var(--void);
+
+	--sl-color-accent-low: var(--char);
+	--sl-color-accent: var(--flame);
+	--sl-color-accent-high: var(--spark);
+	--sl-color-text-accent: var(--flame);
+	--sl-color-text-invert: var(--char);
+	--sl-color-bg-nav: rgb(20 19 26 / 0.94);
+	--sl-color-bg-sidebar: var(--panel-dark);
+	--sl-color-bg-inline-code: var(--panel-raised);
+	--sl-color-hairline-light: var(--panel-hover);
+	--sl-color-hairline: var(--outline-hard);
+	--sl-color-backdrop-overlay: rgb(5 2 3 / 0.86);
+
+	--sl-color-orange-low: #3a1a05;
+	--sl-color-orange: var(--flame);
+	--sl-color-orange-high: var(--spark);
+	--sl-color-green-low: #062006;
+	--sl-color-green: #55ff55;
+	--sl-color-green-high: #b6ffb6;
+	--sl-color-red-low: #2a1a1a;
+	--sl-color-red: #ff6a4d;
+	--sl-color-red-high: #ffc2b5;
+	--sl-color-blue-low: #1e1d33;
+	--sl-color-blue: var(--ink-muted);
+	--sl-color-blue-high: var(--ink-bright);
+	--sl-color-purple-low: #180a2c;
+	--sl-color-purple: #a45cff;
+	--sl-color-purple-high: #f7f0ff;
+
+	--sl-font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+	--sl-nav-height: 4rem;
+}
+
+/* ---------- Base ---------- */
+
+/* Pixel art: square corners and crisp images everywhere. */
+*,
+*::before,
+*::after {
+	border-radius: 0 !important;
+}
+
+img {
+	image-rendering: pixelated;
+}
+
+body {
+	cursor: url('/cursors/cursor.png') 1 1, auto;
+	background: linear-gradient(180deg, #17121a 0%, var(--void) 420px) fixed;
+}
+
+a:hover,
+button:hover,
+summary:hover,
+select:hover {
+	cursor: url('/cursors/cursor-select.png') 8 8, pointer;
+}
+
+::selection {
+	background: var(--ember);
+	color: var(--char);
+}
+
+:focus-visible {
+	outline: 3px solid var(--spark);
+	outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #3a3946;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--flame);
+}
+
+.sl-markdown-content a:not(:where(.not-content *)) {
+	color: var(--flame);
+}
+.sl-markdown-content a:not(:where(.not-content *)):hover {
+	color: var(--spark);
+}
+
+/* ---------- Headings: Pixelify Sans with the fire gradient ---------- */
+
+h1#_top,
+.hero h1,
+.sl-markdown-content :is(h1, h2, h3):not(:where(.not-content *)) {
+	font-family: var(--font-display);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	background-image: var(--gradient-fire);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(3px 3px 0 var(--char));
+	width: fit-content;
+}
+
+h1#_top {
+	filter: drop-shadow(4px 5px 0 var(--char)) drop-shadow(0 0 26px rgb(221 96 3 / 0.32));
+}
+
+.sl-markdown-content :is(h4, h5, h6):not(:where(.not-content *)) {
+	font-family: var(--font-pixel);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+	color: var(--flame);
+}
+
+/* ---------- Header: blurred bar with an ember-lit bottom edge ---------- */
+
+header.header {
+	background-color: rgb(20 19 26 / 0.94);
+	background-image:
+		linear-gradient(180deg, rgb(20 19 26 / 0.94) 0%, rgb(13 3 5 / 0.9) 100%),
+		linear-gradient(90deg, rgb(241 154 15 / 0) 0%, rgb(241 154 15 / 0.75) 22%, rgb(241 154 15 / 0.75) 78%, rgb(241 154 15 / 0) 100%);
+	background-origin: border-box;
+	background-clip: padding-box, border-box;
+	border-bottom: 3px solid transparent;
+	box-shadow: inset 0 2px 0 0 rgb(255 255 255 / 0.05), 0 12px 30px rgb(0 0 0 / 0.5);
+	backdrop-filter: blur(10px);
+}
+
+.site-title {
+	font-family: var(--font-display);
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--ink-bright);
+	text-shadow: 3px 3px 0 var(--char);
+}
+
+.site-title img {
+	box-shadow: 0 0 0 3px var(--flame), 0 0 0 6px var(--char), 0 0 26px rgb(221 96 3 / 0.5);
+	margin-inline: 6px;
+}
+
+/* Search box: launcher secondary-button look. */
+site-search button[data-open-modal] {
+	background: var(--panel-raised);
+	border: 0;
+	box-shadow: inset 0 3px 0 0 rgb(255 255 255 / 0.09), inset 0 -3px 0 0 rgb(0 0 0 / 0.55), 0 0 0 3px var(--outline-hard);
+}
+
+/* ---------- Sidebar ---------- */
+
+#starlight__sidebar {
+	border-inline-end: 3px solid var(--outline-hard);
+}
+
+.sidebar-content .large {
+	font-family: var(--font-pixel);
+	font-size: var(--sl-text-sm);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+	color: var(--ember);
+}
+
+.sidebar-content a[aria-current='page'] {
+	background: var(--flame);
+	color: var(--char);
+	font-weight: 600;
+	box-shadow: inset 0 3px 0 0 var(--spark), inset 0 -3px 0 0 var(--ember);
+}
+
+/* ---------- Panels: cards, link cards, asides, code ---------- */
+
+.card,
+.sl-link-card {
+	background-image: linear-gradient(180deg, var(--panel), var(--panel-deep)), var(--edge-ember);
+	background-origin: border-box;
+	background-clip: padding-box, border-box;
+	border: 3px solid transparent;
+	box-shadow: var(--bevel-panel);
+}
+
+.card .title {
+	font-family: var(--font-display);
+	text-transform: uppercase;
+}
+
+.card .icon {
+	background: var(--char);
+	border: 0;
+	box-shadow: 0 0 0 3px var(--flame);
+	color: var(--spark);
+}
+
+.sl-link-card:hover {
+	background-image: linear-gradient(180deg, var(--panel-hover), var(--panel)), var(--edge-ember);
+	transform: translateY(-2px);
+}
+
+.starlight-aside {
+	border: 0;
+	border-inline-start: 4px solid var(--sl-color-asides-border);
+	background: linear-gradient(90deg, var(--sl-color-asides-bg), var(--panel-deep));
+	box-shadow: var(--bevel-panel);
+}
+
+.starlight-aside__title {
+	font-family: var(--font-pixel);
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.sl-markdown-content code:not(:where(.not-content *, pre *)) {
+	color: var(--spark);
+	box-shadow: 0 0 0 1px var(--outline-hard);
+}
+
+.expressive-code .frame {
+	box-shadow: 0 0 0 3px var(--outline-hard), 0 12px 30px rgb(0 0 0 / 0.4);
+}
+
+.sl-badge {
+	font-family: var(--font-pixel);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+/* Prev/next links at the bottom of each page. */
+.pagination-links a {
+	background: var(--panel-deep);
+	border: 0;
+	box-shadow: 0 0 0 3px var(--outline-hard), var(--bevel-panel);
+}
+.pagination-links a:hover {
+	box-shadow: 0 0 0 3px var(--flame), var(--bevel-panel);
+}
+
+/* ---------- Buttons: chunky launcher bevels ---------- */
+
+.sl-link-button {
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	border: 0;
+	transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sl-link-button:hover {
+	transform: translateY(-2px);
+}
+
+.sl-link-button.primary {
+	background: var(--flame);
+	color: var(--char);
+	box-shadow: inset 0 4px 0 0 var(--spark), inset 0 -4px 0 0 var(--ember), 0 0 0 3px var(--char), 0 6px 0 0 var(--scorch);
+}
+.sl-link-button.primary:hover {
+	background: var(--gold);
+	color: var(--char);
+}
+
+.sl-link-button.secondary {
+	background: var(--panel-raised);
+	color: var(--ink);
+	box-shadow: inset 0 3px 0 0 rgb(255 255 255 / 0.09), inset 0 -3px 0 0 rgb(0 0 0 / 0.55), 0 0 0 3px var(--outline-hard);
+}
+.sl-link-button.secondary:hover {
+	background: var(--panel-hover);
+	color: var(--spark);
+}
+
+/* ---------- Splash page ---------- */
+
+:root[data-has-hero] body {
+	background:
+		radial-gradient(60% 60% at 50% 30%, rgb(13 3 5 / 0.35), rgb(13 3 5 / 0.95)),
+		url('../assets/hero-cavern.webp') center top / cover no-repeat fixed,
+		var(--void);
+}
+
+.hero h1 {
+	font-size: clamp(var(--sl-text-4xl), 6vw + 1rem, var(--sl-text-6xl));
+	line-height: 1;
+	filter: drop-shadow(4px 5px 0 var(--char)) drop-shadow(0 0 26px rgb(221 96 3 / 0.4));
+}
+
+.hero .tagline {
+	font-family: var(--font-pixel);
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--ink-soft);
+}
+
+.hero img {
+	box-shadow: 0 0 0 4px var(--flame), 0 0 0 8px var(--char), 0 0 60px rgb(221 96 3 / 0.45);
+	max-width: 12rem;
+}
+
+/* Mobile menu toggle: launcher secondary button. */
+.sl-menu-button {
+	background: var(--panel-raised);
+	color: var(--ink);
+	box-shadow: inset 0 3px 0 0 rgb(255 255 255 / 0.09), inset 0 -3px 0 0 rgb(0 0 0 / 0.55), 0 0 0 3px var(--outline-hard);
+}
+.sl-menu-button:has(~ :popover-open) {
+	background: var(--flame);
+	color: var(--char);
+}
