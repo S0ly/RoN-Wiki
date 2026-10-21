@@ -19,7 +19,6 @@ export default defineConfig({
 			head: [
 				{ tag: 'meta', attrs: { name: 'color-scheme', content: 'dark' } },
 				{ tag: 'meta', attrs: { name: 'theme-color', content: '#0d0305' } },
-				{ tag: 'meta', attrs: { property: 'og:image', content: '/og-image.jpg' } },
 				{ tag: 'link', attrs: { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' } },
 			],
 			social: [
